@@ -8,7 +8,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonHome"
+        android:id="@+id/buttonLogin"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="30dp"

@@ -1,5 +1,6 @@
 package com.example.mangami.features.auth.login.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.mangami.R
 import com.example.mangami.databinding.FragmentLoginBinding
+import com.example.mangami.navigation.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,8 +32,10 @@ class LoginFragment : Fragment() {
         binding.textViewSignup.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_signupFragment)
         }
-        binding.buttonHome.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+        binding.buttonLogin.setOnClickListener {
+            val intent = Intent(requireContext(), MainActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
         }
 
     }
