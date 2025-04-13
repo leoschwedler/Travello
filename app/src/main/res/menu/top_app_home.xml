@@ -5,11 +5,13 @@
         android:id="@+id/edit"
         android:icon="@drawable/ic_home"
         android:title="TODO"
+        android:iconTint="@color/white"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/favorite"
         android:icon="@drawable/ic_home"
+        android:iconTint="@color/white"
         android:title="TODO"
         app:showAsAction="ifRoom" />
 </menu>

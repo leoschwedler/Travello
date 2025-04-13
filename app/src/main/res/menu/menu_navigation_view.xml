@@ -6,11 +6,11 @@
         android:icon="@drawable/ic_home"
         android:title="home" />
     <item
-        android:id="@+id/settings"
+        android:id="@+id/profile"
         android:icon="@drawable/ic_person"
         android:title="profile" />
     <item
-        android:id="@+id/profile"
+        android:id="@+id/settings"
         android:icon="@drawable/ic_settings"
         android:title="settings" />
 

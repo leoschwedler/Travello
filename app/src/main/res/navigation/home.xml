@@ -9,5 +9,14 @@
         android:id="@+id/homeFragment"
         android:name="com.example.mangami.features.main.home.presentation.ui.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_home2Fragment"
+            app:destination="@id/home2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/home2Fragment"
+        android:name="com.example.mangami.Home2Fragment"
+        android:label="fragment_home2"
+        tools:layout="@layout/fragment_home2" />
 </navigation>
