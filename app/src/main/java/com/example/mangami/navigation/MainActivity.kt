@@ -1,7 +1,6 @@
 package com.example.mangami.navigation
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -23,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(binding.toolbar) { view, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.topAppBar) { view, insets ->
             val topInset = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
             view.updatePadding(top = topInset)
             insets
@@ -38,13 +37,28 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(R.id.homeFragment, R.id.profileFragment, R.id.settingsFragment)
         )
-        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
+        binding.topAppBar.setupWithNavController(navController, appBarConfiguration)
         binding.bottomNavigation.setupWithNavController(navController)
-        navController.addOnDestinationChangedListener() { _, destination, _ ->
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             val isTopLevelDestination =
                 appBarConfiguration.topLevelDestinations.contains(destination.id)
             if (!isTopLevelDestination) {
-                binding.toolbar.setNavigationIcon(R.drawable.ic_arrow_back)
+                binding.topAppBar.setNavigationIcon(R.drawable.ic_arrow_back)
+            }
+            binding.topAppBar.menu.clear()
+            when (destination.id) {
+                R.id.homeFragment -> {
+                    binding.topAppBar.inflateMenu(R.menu.top_app_home)
+                }
+
+                R.id.profileFragment -> {
+                    binding.topAppBar.inflateMenu(R.menu.top_app_profile)
+                }
+
+                R.id.settingsFragment -> {
+                    binding.topAppBar.inflateMenu(R.menu.top_app_settings)
+                }
             }
         }
     }
